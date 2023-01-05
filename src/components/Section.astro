@@ -1,0 +1,107 @@
+---
+interface Item {
+  title: string
+  description: string
+  image?: string
+  link?: string
+}
+
+export interface Props {
+  title: string
+  items: Item[]
+}
+
+const props = Astro.props
+---
+
+<div class='section'>
+  <div class='title'>
+    <h2>
+      <code>
+        <span class='username'>root</span><span>#&nbsp;</span>{props.title}<span
+          class='cursor'>_</span
+        >
+      </code>
+    </h2>
+  </div>
+  <div class='blocks'>
+    {
+      props.items.map((it) =>
+        it.link ? (
+          <a class='block' href={it.link} target='_blank'>
+            <h3>{it.title}</h3>
+            {it.image && <img src={it.image} alt={`${it.title}の画像`} />}
+            <p>{it.description}</p>
+          </a>
+        ) : (
+          <div class='block'>
+            <h3>{it.title}</h3>
+            {it.image && <img src={it.image} alt={`${it.title}の画像`} />}
+            <p>{it.description}</p>
+          </div>
+        )
+      )
+    }
+  </div>
+</div>
+
+<style lang='scss'>
+  .section {
+    display: grid;
+    gap: 16px;
+  }
+  .title {
+    h2 {
+      font-weight: 400;
+      font-size: 16px;
+      background: black;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+    .username {
+      color: #e74856;
+    }
+    .cursor {
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  }
+  .blocks {
+    display: grid;
+    gap: 16px;
+  }
+  a:hover {
+    transition: all 0.1s;
+    background: #eee;
+  }
+  .block {
+    display: grid;
+    gap: 4px;
+    padding: 12px;
+
+    border: solid 1px lightgrey;
+    border-radius: 8px;
+
+    color: black;
+    background: white;
+    text-decoration: none;
+    h3 {
+      font-size: 16px;
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+</style>

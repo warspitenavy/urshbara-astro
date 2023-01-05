@@ -1,0 +1,29 @@
+// 'sm': '576px',
+$bp_sm: 576px;
+// '768px',
+$bp_md: 768px;
+// '1024px',
+$bp_lg: 1024px;
+// '1280px',
+$bp_xl: 1280px;
+// '1536px',
+$bp_2xl: 1536px;
+
+$breakpoints: (
+  'sm': $bp_sm,
+  'md': $bp_md,
+  'lg': $bp_lg,
+  'xl': $bp_xl,
+  '2xl': $bp_2xl
+) !default;
+
+@mixin bp($breakpoint: 'sm') {
+  @if map-has-key($breakpoints, $breakpoint) {
+    // @media screen and (min-width: #{map-get($breakpoints, $breakpoint)}) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @error 'no such Breakpoint: #{$breakpoint}';
+  }
+}

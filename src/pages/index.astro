@@ -1,0 +1,131 @@
+---
+import Section from '../components/Section.astro'
+import Layout from '../layouts/Layout.astro'
+
+const sectionValues = [
+  {
+    title: 'service list',
+    items: [
+      {
+        title: 'MLTD Discography',
+        description: 'ミリオンライブのディスコグラフィー',
+        link: 'https://mltd.app'
+      },
+      {
+        title: 'Blog',
+        description: '試しに作ったMarkdownブログ',
+        link: 'https://blog.urshbara.com'
+      }
+    ]
+  },
+  {
+    title: 'like',
+    items: [
+      { title: '乗り物', description: 'なんでも' },
+      { title: 'お茶', description: '紅茶とかさんぴん茶' },
+      { title: '動物', description: '' }
+    ]
+  },
+  {
+    title: 'games',
+    items: [
+      {
+        title: 'ミリシタ',
+        description: '2020/09より開始 美希',
+        image: '/assets/imasml-theater-meishi.webp'
+      },
+      {
+        title: 'Minecraft',
+        description: '2011年くらいから？',
+        image: '/assets/minecraft-ss.webp'
+      },
+      {
+        title: '太鼓の達人',
+        description: '2010年くらいから、まるで成長していない'
+      },
+      { title: 'AVA', description: '2014年～' },
+      { title: 'VALORANT', description: '2022年11月～' }
+    ]
+  },
+  {
+    title: 'like --tech',
+    items: [
+      { title: 'Kotlin', description: '感情がでかくなりつつある' },
+      { title: 'Vue', description: 'Reactより好き' },
+      { title: 'React', description: 'Vueより好き' },
+      { title: 'Kubernetes', description: 'まともに運用してる' }
+    ]
+  },
+  {
+    title: 'contact',
+    items: [
+      {
+        title: 'Twitter',
+        description: '@urshbara',
+        link: 'https://twitter.com/urshbara'
+      },
+      {
+        title: 'Github',
+        description: '@warspitenavy',
+        link: 'https://github.com/warspitenavy'
+      }
+    ]
+  }
+]
+---
+
+<Layout title='漆原のホームページ'>
+  <main>
+    <div class='top-banner'>
+      <img src='/assets/icon.png' alt='icon.png' />
+      <h1>urshbara</h1>
+      <div class='top-banner-description'>
+        <p>このページはAstro.jsのお試しで作ったものです。</p>
+      </div>
+    </div>
+    <div class='sections'>
+      {sectionValues.map((s) => <Section title={s.title} items={s.items} />)}
+    </div>
+  </main>
+</Layout>
+
+<style lang='scss'>
+  main {
+  }
+  .top-banner {
+    display: grid;
+    place-items: center;
+    padding-top: 32px;
+    gap: 16px;
+    background: linear-gradient(to bottom, #0a192f, #2a4365);
+    img {
+      aspect-ratio: 1/1;
+      width: 160px;
+    }
+    h1 {
+      font-size: 20px;
+      color: white;
+    }
+    &-description {
+      width: 100%;
+      padding: 12px;
+      background: black;
+      text-align: center;
+      p {
+        color: white;
+      }
+    }
+  }
+  .sections {
+    display: grid;
+    gap: 16px;
+    padding: 16px;
+
+    margin: auto;
+
+    max-width: 640px;
+    @include bp.bp('md') {
+      max-width: 920px;
+    }
+  }
+</style>
