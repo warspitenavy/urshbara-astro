@@ -11,7 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^1.9.0",
+    "astro": "^1.9.1",
     "modern-css-reset": "^1.4.0"
   },
   "devDependencies": {
