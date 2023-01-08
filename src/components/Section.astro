@@ -31,13 +31,13 @@ const props = Astro.props
           <a class='block' href={it.link} target='_blank'>
             <h3>{it.title}</h3>
             {it.image && <img src={it.image} alt={`${it.title}の画像`} />}
-            <p>{it.description}</p>
+            {it.description && <p>{it.description}</p>}
           </a>
         ) : (
           <div class='block'>
             <h3>{it.title}</h3>
             {it.image && <img src={it.image} alt={`${it.title}の画像`} />}
-            <p>{it.description}</p>
+            {it.description && <p>{it.description}</p>}
           </div>
         )
       )
